@@ -1,0 +1,239 @@
+Bio_types
+
+We have enumerations, Structures and Exceptions.
+
+There are 20 enumerations.
+
+1) Bio_failure_cause - this enumeration represents the biometric operation failure
+there are 6 fields in this enumeration:  no_hit(0), fake_detected(1), moist_finger(2), enrollment_bad_quality(3), internal_error(4)acquisition_failure(5)
+
+
+2) Hand_swipe_status - this enumeration represents swipe status of hand
+there are 4 fields in this enumeration: swipe_ok(0), swipe_too_fast(1), swipe_too_inclined(2), swipe_too_slow(3) 
+
+3) Bio_depth_status - this enumeration represents the depth status of the hand
+there are 3 fields in this enumeration: deep_enough(0), too_deep(1), not_deep_enough(2)
+
+4) Hand_wave_status - this enumeration represents the status of the hand wave (expectation and direction)
+there are 4 fields in thus enumeration: expected_hand_and_good_direction(0), unexpected_hand_and_good_direction(1), 
+expected_hand_and_wrong_direction(2), unexpected_hand_and_wrong_directionz(3)
+
+5) Inter_matching_status - this enumeration represents the status of inter-matching controls (unicity and coherency)
+there are 3 fields in this enumeration:  inter_matching_ok(0), unicity_ko(1), consistency_ko(2)
+
+6) Device_temperature_status - this enumeration represents the status of device temperature.
+there are 3 fields in this enumeration: temperature_ok(0), temperature_high(1), temperature_too_high(2)
+
+7) Biofinger_command - This enumeration represents the finger position/command event sent by the sensor
+there are 12 fields in this enumeration that are: 
+-biofinger_move_no_finger 0 
+-biofinger_move_finger_up 1 
+-biofinger_move_finger_down 2 
+-biofinger_move_finger_left 3 
+-biofinger_move_finger_right 4 
+-biofinger_press_finger_harder 5 
+-biofinger_latent 6 
+-biofinger_remove_finger 7 
+-biofinger_finger_ok 8 
+-biofinger_finger_detected 9 
+-biofinger_finger_misplaced 10 
+-biofinger_live_ok 11 
+
+8) Bio_event_type - This enumeration represents MorphoWave Tower and MorphoWave Compact terminal specific events
+there are 54 fields in this enumeration which means there are 54 events specific to MorphoWave Tower and MorphoWave Compact terminals. They are: 
+-no_bio 0 
+-move_up 1 
+-move_down 2 
+-move_left 3 
+-move_right 4 
+-press_harder 5 
+-latent_detected 6 
+-remove_bio 7 
+-bio_ok 8 
+-bio_detected 9 
+-bio_misplaced 10 
+-live_ok 11 
+-too_fast 12 
+-too_inclined 13 
+-low_quality_left_index 14 
+-low_quality_left_little 15 
+-low_quality_left_middle 16 
+-low_quality_left_ring 17 
+-low_quality_left_thumb 18 
+-low_quality_right_index 19 
+-low_quality_right_little 20 
+-low_quality_right_middle 21 
+-low_quality_right_ring 22 
+-low_quality_right_thumb 23 
+-duplicate_bio 24 
+-inconsistent_captures 25 
+-fake_detected 26 
+-wrong_bio_number 27 
+-device_dirty 28 
+-glass_scratched 29 
+-capture_started 30 
+-pre_proc_done 31 
+-coding_matching_done 32 
+-temperature_high 33 
+-temperature_too_high 34 
+-presence_detected 35 
+-capture_ended 36 
+-force_bio_ok 37 
+-bad_hand 38 
+-bad_direction 39 
+-too_slow 40 
+-not_deep_enough 41 
+-too_deep 42 
+-low_quality_bio 43 
+-remove_glasses 44 
+-too_close 45 
+-too_far 46 
+-rotate_right 47 
+-rotate_left 48 
+-rotate_up 49 
+-rotate_down 50 
+-tilt_head_right 51 
+-tilt_head_left 52 
+-stand_still 53 
+
+
+9) Bio_compression_type - this enumeration represents the compression used in an exported image
+there are 3 fields in this enumeration representing the 3 ways to compress an image, they are:
+-null_algo 0 
+-v1_algo 1 
+-wsq_algo 2 
+
+
+10) Bio_consolidation_status - this enumeration represents the status of a finger during a consolidated swipe.
+there are 3 fields in this enumeration. 
+-no_status 0
+-poor_quality 1
+-good_quality 2
+
+11) Bio_image_format - this enumeration represents the image format
+there are 3 fields in this enumeration, they are:
+-unknown 0 
+-RGB24 1 
+-Y8 2 
+
+
+12) Bio_image_category - this enumeration represents the image category
+there are 3 fields in this enumeration, they are:
+-standard 0 
+-iqs 1 
+-legacy 2 
+
+13) Bio_template_type - 
+
+14) Bio_status - this enumeration represents the status of biometric data for enrollment process
+there are 3 fields in this enumeration, they are:
+-safe 0 
+-amputated 1 
+-bandaged 2 
+
+15) Bio_async_event - this enumeration represents the events that can be monitored
+there are 6 fields in this enumeration, they are:
+-bio_positions 0 
+-low_resol_live_images 1 
+-enrollment_steps 2 
+-high_resol_captures_image 3 
+-captures_quality 4 
+-live_quality 5 
+
+16) Bio_sensor_security_level - this enumeration represents the FFD security level to use
+there are 7 fields in this enumeration, they are:
+-FFD_low 0 
+-FFD_medium 1 
+-FFD_high 2 
+-FFD_veryHigh 3 
+-FFD_reserved4 4 
+-FFD_reserved5 5 
+-FFD_disabled 6 
+
+
+17) Bio_matching_strategy - this enumeration represents the matching strategy to apply
+there are 3 fields representing the 3 matching strategies, they are:
+-standard_strategy 0 
+-advanced_strategy 1 
+-fastest_strategy 2 
+
+
+18) Bio_hand - this enumeration represents the left or right hand
+there are 2 fields representing either of the 2 hands, they are:
+-right_hand 0 
+-left_hand 1 
+
+
+19) Bio_acquisition_threshold - this enumeration represents the acquisition threshold for the enrollment process
+there are 3 fields in this enumeration, they are:
+-standard_quality_check 0 
+-secure_quality_check 1 
+-very_secure_quality_check 2 
+
+20) Enrollment_type - this enumeration represents the operation of the enrollment process
+there are 3 fields in this enumeration, they are:
+-store 0 
+-transfer 1 
+-both 2 
+
+
+
+There are 12 Structures
+
+
+1) Bio_acquisition_status - this structure contains the acquisition status
+there are 8 fields in this struct, they are:
+- dirty_glass, boolean datatype, Dirty status of sensor glass.    
+- scratched_glass, boolean datatype, Scratched status of sensor glass.    
+- swipe_status, Hand_swipe_status datatype, Hand swipe status.    
+- depth_status, Bio_depth_status datatype, Hand depth status.    
+- wave_status, Hand_wave_status datatype, Hand wave status.    
+- nb_captured_bio_status, bool datatype, Captured fingers number status (expected or not expected). 
+- inter_matching_status, Inter_matching_status datatype, Inter matching status.    
+- temperature_status, Device_temperature_status datatype, Device temperature status.   
+
+
+2) Bio_control_final_result - this structure has 7 fields
+- success: this field is of bool type. it indicates the matching result.its true for hit and false for no hit/error
+- cause: this field is of Bio_failure_cause type. it indicates the cause of error.
+- matching_score: this field is of byte type. 
+- matching_template_number: this field is of byte type. if the success field is true, it will return the number of the finger that matched with the captured one
+- user_ID_UTF8: this field is of type string. it contains the UserID.
+- biometric_matching_score: this field is of datatype i32. it stores the score of the matching operation if success field is true
+- acquisition_status: this field is of datatype Bio_acquisition_status. Status information of last acquisition Present if success is true or failure cause is acquisition_failure.
+
+3) Bio_event - this structure contains 2 fields
+- command: this field is of type Biofinger_command.
+- events: this field is a list of Bio_event_type. it contains biometric capture events and feedback messages. it is sent as intermediate reply of biometric command
+
+
+4) Bio_sensor_image - this structure has 10 fields.
+- width_in_pix: this field is of type i32. it contains the width of the image in pixels
+- height_in_pix: this field is of type i32. it contains the height of the image in pixels
+- horizontal_resol_dpi: this field is of type i32. it contains the horizontal resolution of the image in dot per inch
+- vertical_resol_dpi: this field is of type i32. it contains the vertical resolution of the image in dot per inch
+- compression_type: this field is of type Bio_compression_type. it contains the compression algorithm used on the image
+- image_data: this field is a of binary datatype. it contains the image's binary data.
+- bits_per_pixel: this field is of type byte. it contains the number of bits per pixel for the image.
+- finger_number: this field is of type byte. it contains the number that represents the finger captured. 1 for left little finger to 10 for right little finger
+- consolidation_status: this field is of type Bio_consolidation_status. it contains the consolidation status of the finger.
+- image_format: this field is of type Bio_image_format. it contains the format of the image
+
+
+
+5) Bio_template - this structure contains 2 fields
+- template_type: this field is of type Bio_template_type. it contains the type of the template
+- template_thershold_quality: this field is of type i16. it contains the threshold quality of the output template
+
+
+
+
+
+
+
+
+
+
+
+
+

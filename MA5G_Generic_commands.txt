@@ -1,0 +1,1054 @@
+Services
+Service: MA5G_generic_commands
+
+
+Function: MA5G_generic_commands.job_code_load_lists
+void job_code_load_lists(list<Db_types.Jobcode_list> list_values)
+    throws Db_types.Job_code_list_data_invalid, Db_types.Job_code_list_array_full, Db_types.Invalid_job_code_array_length, Generic_types.Generic_error
+This function is used To load one or more job code lists 
+This command will add job code list and if list is already exist then it will update the list 
+the products supported by MA5G_generic_commands.job_code_load_lists function are MA Sigma, MorphoWave, MA Extreme, MorphoWave Compact, VisionPass and VisionPass SP but it does not support MA Lite+, MA Lite and MorphoWave SP.
+
+
+
+
+Function: MA5G_generic_commands.job_code_retrieve_lists
+list<Db_types.Jobcode_list> job_code_retrieve_lists(set<i16> list_numbers)
+    throws Db_types.Job_code_list_data_invalid, Generic_types.Generic_error
+
+This function is used To retrieve one or more job code lists data 
+this command\function will Return the job code list array. 
+the products supported by MA5G_generic_commands.job_code_load_lists function are MA Sigma, MorphoWave, MA Extreme, MorphoWave Compact, VisionPass and VisionPass SP but it does not support MA Lite+, MA Lite and MorphoWave SP.
+
+
+
+Function: MA5G_generic_commands.job_code_retrieve_list_indices
+list<Db_types.Jobcode_list> job_code_retrieve_list_indices()
+    throws Generic_types.Generic_error
+
+this function is used To retrieve all job code list number and name 
+this command\function will Return all job code list number and name. 
+the products supported by MA5G_generic_commands.job_code_load_lists function are MA Sigma, MorphoWave, MA Extreme, MorphoWave Compact, VisionPass and VisionPass SP but it does not support MA Lite+, MA Lite and MorphoWave SP.
+
+
+
+Function: MA5G_generic_commands.job_code_check_value_against_user
+void job_code_check_value_against_user(string user_id,
+                                       i32 jobcode_value)
+    throws Db_types.Job_code_validation_failed, Generic_types.Generic_error
+
+This function Job code value validate against user 
+the products supported by MA5G_generic_commands.job_code_load_lists function are MA Sigma, MorphoWave, MA Extreme, MorphoWave Compact, VisionPass and VisionPass SP but it does not support MA Lite+, MA Lite and MorphoWave SP.
+
+
+
+Function: MA5G_generic_commands.job_code_empty_lists
+map<i16, bool> job_code_empty_lists(set<i16> list_numbers)
+    throws Generic_types.Generic_error
+
+this function is used To remove all job code lists 
+the products supported by MA5G_generic_commands.job_code_load_lists function are MA Sigma, MorphoWave, MA Extreme, MorphoWave Compact, VisionPass and VisionPass SP but it does not support MA Lite+, MA Lite and MorphoWave SP.
+
+
+
+Function: MA5G_generic_commands.job_code_remove_all_lists
+void job_code_remove_all_lists()
+    throws Generic_types.Generic_error
+this command/function is used to remove all job codes lists
+
+
+the products supported by MA5G_generic_commands.job_code_load_lists function are MA Sigma, MorphoWave, MA Extreme, MorphoWave Compact, VisionPass and VisionPass SP but it does not support MA Lite+, MA Lite and MorphoWave SP.
+
+
+
+Function: MA5G_generic_commands.transaction_log_get_status
+Db_types.Transaction_log_status transaction_log_get_status(Db_types.Transaction_log_filter filter)
+    throws Generic_types.Invalid_argument_error, Generic_types.Generic_error
+	
+this is the Function/Command to get the transaction log status. this command\function Returns transaction log status values. Transaction logs shall not be used for real time monitoring: sending Thrift requests to the biometric terminal with high frequency will affect the system availability.
+the event interface (link to events_set_config), to receive access control operation results in real time.
+
+
+
+Function: MA5G_generic_commands.transaction_log_retrieve
+list<Db_types.Transaction_log_DB_record> transaction_log_retrieve(Db_types.Transaction_log_filter filter,
+                                                                  set<Db_types.Transaction_log_DB_fields> required_fields)
+    throws Generic_types.Invalid_argument_error, Generic_types.Generic_error
+	
+this function/Command is used to retrieve the transaction log entries. 
+This command is multi response command. It will give data in multiresponse. 
+this command Returns list of the transaction log entries as per the filter applied.
+Specific handling is needed for the multiresponse.
+
+
+
+Function: MA5G_generic_commands.transaction_log_delete_all
+void transaction_log_delete_all()
+    throws Generic_types.Generic_error
+
+this function/Command is used to delete all the transaction log entries. 
+
+
+
+Function: MA5G_generic_commands.transaction_log_get_fields
+set<Db_types.Transaction_log_DB_fields> transaction_log_get_fields()
+    throws Generic_types.Generic_error
+this function/command Gets the available fields in the transaction log records 
+this command Returns the list of available transaction log record fields. 
+
+
+
+
+Function: MA5G_generic_commands.transaction_log_delete
+void transaction_log_delete(Db_types.Transaction_log_filter filter)
+    throws Generic_types.Invalid_argument_error, Generic_types.Generic_error
+this function/Command is used to delete the transaction log(s). 
+
+
+
+Function: MA5G_generic_commands.transaction_log_tag_read
+void transaction_log_tag_read(Db_types.Transaction_log_filter filter)
+    throws Generic_types.Invalid_argument_error, Generic_types.Generic_error
+this function/Command is used to apply read tag to the transaction log(s). 
+
+
+
+Function: MA5G_generic_commands.config_get_all_params_name
+set<string> config_get_all_params_name()
+    throws Generic_types.Generic_error
+this function Returns a list of name of all terminal parameters 
+
+
+Function: MA5G_generic_commands.config_get_params
+list<Generic_types.Variant> config_get_params(list<string> param_list_UTF8)
+    throws Config_types.Config_inexistent_parameter_error, Generic_types.Generic_error
+Returns a list of values corresponding to requested parameters 
+
+
+
+
+Function: MA5G_generic_commands.config_set_params
+void config_set_params(map<string, Generic_types.Variant> param_map)
+    throws Config_types.Config_inexistent_parameter_error, Config_types.Config_invalid_value_error, Generic_types.License_not_found, Generic_types.SD_card_not_found, Generic_types.Generic_error
+this function/command Sets requested parameters with given values 
+
+
+
+Function: MA5G_generic_commands.config_get_range
+map<string, Generic_types.Parameter_range> config_get_range(list<string> param_keys)
+    throws Config_types.Config_inexistent_parameter_error, Generic_types.Generic_error
+this function/command is used to Get the value range of the required or all configuration parameters. 
+
+
+
+
+Function: MA5G_generic_commands.cls_authenticate_user
+Cls_types.cls_authent_user_reply cls_authenticate_user(i32 timeout_in_sec,
+                                                       Cls_types.cls_authent_user_params authent_param)
+    throws Generic_types.Timeout_error, Generic_types.Invalid_argument_error, Generic_types.Cancelled_error, Bio_types.Misplaced_finger_error, Generic_types.Generic_error
+
+this command/function Uses data contained in a contactless card to authenticate an user (biometric and/or PIN and/or BIOPIN check).This is how a user is authenticated using a contactless card.
+
+Functionality change required in Thrift generated client code (C++ sample)
+Similar to the C++ sample code provided for the method biofinger_identify 
+the products supported by MA5G_generic_commands.cls_authenticate_user function are MA SIGMA, MA LITE+, MA LITE, MA EXTREME, MORPHOWAVE COMPACT, VISIONPASS, MORPHOWAVE SP, VISIONPASS SP but it does not support MORPHOWAVE
+
+
+
+Function: MA5G_generic_commands.biofinger_identify
+Bio_types.Bio_control_operation_reply biofinger_identify(byte database_id,
+                                                         i32 timeout_in_sec,
+                                                         byte threshold,
+                                                         bool enable_intermediate_replies,
+                                                         Bio_types.Bio_control_optional_param optional_param)
+    throws Db_types.DB_empty_error, Generic_types.Timeout_error, Generic_types.Invalid_argument_error, Generic_types.Cancelled_error, Bio_types.Misplaced_finger_error, Generic_types.Generic_error
+
+This function/command is used to Identify an user using its finger against the terminal database 
+The reference templates are stored in one (and only one) specified record.
+The search template is compared to all the templates found in the database 
+the products supported by MA5G_generic_commands.biofinger_identify are MA SIGMA, MA LITE+, MA LITE, MORPHOWAVE, MA EXTREME, MORPHOWAVE COMPACT, MORPHOWAVE SP but it does not support VISIONPASS and VISIONPASS SP
+
+
+
+Function: MA5G_generic_commands.bioface_identify
+Bio_types.Bio_control_operation_reply bioface_identify(i32 timeout_in_sec,
+                                                       byte threshold,
+                                                       Bio_types.Bio_control_optional_param optional_param)
+    throws Db_types.DB_empty_error, Generic_types.Timeout_error, Generic_types.Invalid_argument_error, Generic_types.Cancelled_error, Bio_types.Misplaced_finger_error, Generic_types.Generic_error
+
+
+This command/function identifies a user using its face against the terminal database 
+The reference templates are stored in one (and only one) specified record.
+The search template is compared to all the templates found in the database 
+Warning: If any event of Bio_types.Bio_async_event is set, you will need a modified version of the Thrift client that supports the reception of several T_REPLY messages for one command.
+The products supported by MA5G_generic_commands.bioface_identify function are VISIONPASS AND VISIONPASS SP but does not support MA SIGMA, MA LITE+, MA LITE, MORPHOWAVE, MA EXTREME, MORPHOWAVE COMPACT, MORPHOWAVE SP
+
+
+
+
+Function: MA5G_generic_commands.biofinger_authenticate_db
+Bio_types.Bio_control_operation_reply biofinger_authenticate_db(byte database_id,
+                                                                i32 timeout_in_sec,
+                                                                byte threshold,
+                                                                string user_id_UTF8,
+                                                                bool enable_intermediate_replies,
+                                                                Bio_types.Bio_control_optional_param optional_param)
+    throws Generic_types.Inexistent_user_id_error, Db_types.DB_empty_error, Generic_types.Timeout_error, Generic_types.Invalid_argument_error, Generic_types.Cancelled_error, Bio_types.Misplaced_finger_error, Generic_types.Generic_error
+
+this function/command Authenticates a user using its finger against its database references 
+The reference templates are stored in one (and only one) specified record.
+The search template is compared to all the templates found in the specified record (the number of fingerprint templates depends on the database format). 
+
+Warning: If enable_intermediate_replies is true, you will need a modified version of the Thrift client that supports the reception of several T_REPLY messages for one command.
+
+Functionality change required in Thrift generated client code (C++ sample)
+Similar to the C++ sample code provided for the method biofinger_identify 
+the products supported by MA5G_generic_commands.biofinger_authenticate_db function are MA SIGMA, MA LITE+, MA LITE, MORPHOWAVE, MA EXTREME, MORPHOWAVE COMPACT, MORPHOWAVE SP but it does not support VISIONPASS AND VISIONPASS SP
+
+
+
+
+
+Function: MA5G_generic_commands.bioface_authenticate_db
+Bio_types.Bio_control_operation_reply bioface_authenticate_db(i32 timeout_in_sec,
+                                                              byte threshold,
+                                                              string user_id_UTF8,
+                                                              Bio_types.Bio_control_optional_param optional_param)
+    throws Generic_types.Inexistent_user_id_error, Db_types.DB_empty_error, Generic_types.Timeout_error, Generic_types.Invalid_argument_error, Generic_types.Cancelled_error, Generic_types.Generic_error
+
+
+this function/command Authenticates an user using its face against the database reference.
+The reference template is stored in one (and only one) specified record.
+The captured template is compared to the template found in the record specified by user_id_UTF8. 
+the products supported by MA5G_generic_commands.bioface_authenticate_db function are VISIONPASS AND VISIONPASS SP but it does not support MA SIGMA, MA LITE+, MA LITE, MORPHOWAVE, MA EXTREME, MORPHOWAVE COMPACT, MORPHOWAVE SP.
+
+
+
+Function: MA5G_generic_commands.biofinger_authenticate_ref
+Bio_types.Bio_control_operation_reply biofinger_authenticate_ref(i32 timeout_in_sec,
+                                                                 byte threshold,
+                                                                 list<Bio_types.User_templates> ref_template_list,
+                                                                 bool enable_intermediate_replies,
+                                                                 Bio_types.Bio_control_optional_param optional_param)
+    throws Bio_types.Unsupported_format_error, Bio_types.Incompatible_ref_error, Generic_types.Timeout_error, Generic_types.Invalid_argument_error, Generic_types.Cancelled_error, Bio_types.Misplaced_finger_error, Generic_types.Generic_error
+
+
+this function/command Authenticates an user using its templates passed as parameter.
+the products supported by MA5G_generic_commands.biofinger_authenticate_ref function are MA SIGMA, MA LITE+, MA LITE, MORPHOWAVE, MA EXTREME, MORPHOWAVE COMPACT, MORPHOWAVE SP but it does not support VISIONPASS AND VISIONPASS SP
+
+
+
+
+Function: MA5G_generic_commands.bioface_authenticate_ref
+Bio_types.Bio_control_operation_reply bioface_authenticate_ref(i32 timeout_in_sec,
+                                                               byte threshold,
+                                                               list<Bio_types.User_templates> ref_template_list,
+                                                               Bio_types.Bio_control_optional_param optional_param)
+    throws Bio_types.Unsupported_format_error, Bio_types.Incompatible_ref_error, Generic_types.Timeout_error, Generic_types.Invalid_argument_error, Generic_types.Cancelled_error, Generic_types.Generic_error
+this function/command Authenticates an user using its template passed as parameter 
+the products supported by MA5G_generic_commands.bioface_authenticate_ref function are VISIONPASS AND VISIONPASS SP but it does not support MA SIGMA, MA LITE+, MA LITE, MORPHOWAVE, MA EXTREME, MORPHOWAVE COMPACT, MORPHOWAVE SP.
+
+
+
+
+Function: MA5G_generic_commands.biofinger_enroll
+Bio_types.Bio_enroll_operation_reply biofinger_enroll(byte database_id,
+                                                      i32 timeout_in_sec,
+                                                      Bio_types.Enrollment_type enrollment_type,
+                                                      byte nb_of_finger,
+                                                      string user_id_UTF8,
+                                                      Db_types.User_DB_record user_fields,
+                                                      bool enable_intermediate_replies,
+                                                      Bio_types.Bio_enroll_optional_param optional_param)
+    throws Bio_types.Incompatible_ref_error, Generic_types.Timeout_error, Generic_types.Invalid_argument_error, Generic_types.Cancelled_error, Db_types.DB_duplicate_record_error, Db_types.DB_full_error, Db_types.User_DB_unavailable_field, Bio_types.Duplicated_finger_error, Generic_types.Generic_error, Generic_types.SD_card_not_found, Bio_types.Unsupported_format_error
+
+in MA5G, this function/command Captures user fingers, optionally stores them in terminal database, and/or returns finger templates, and/or returns fingerprint images. 
+The template is calculated after three finger acquisitions (the user has to put each finger three times on the sensor). To obtain the best accuracy, users are advised to use the fore, the thumb or the middle fingers.
+in MorphoWave Compact, MA5G_generic_commands.biofinger_enroll this command/function Captures 1 , 2 or 4 fingers in the hand swiped (1 and 2 are for thumb capture) . The result of enrollment after minimum two consolidated swipes could be stored and/or returned.
+the products supported by MA5G_generic_commands.biofinger_enroll function are MA SIGMA, MA LITE+, MA LITE, MORPHOWAVE, MA EXTREME, MORPHOWAVE COMPACT, MORPHOWAVE SP but it does not support VISIONPASS AND VISIONPASS SP
+
+
+
+
+Function: MA5G_generic_commands.bioface_enroll
+Bio_types.Bio_enroll_operation_reply bioface_enroll(i32 timeout_in_sec,
+                                                    Bio_types.Enrollment_type enrollment_type,
+                                                    string user_id_UTF8,
+                                                    Db_types.User_DB_record user_fields,
+                                                    Bio_types.Bio_enroll_optional_param optional_param)
+    throws Bio_types.Incompatible_ref_error, Generic_types.Timeout_error, Generic_types.Invalid_argument_error, Generic_types.Cancelled_error, Db_types.DB_duplicate_record_error, Db_types.DB_full_error, Db_types.User_DB_unavailable_field, Bio_types.Unsupported_format_error, Generic_types.Generic_error
+This function/command Captures user face, optionally stores it in terminal database, and/or returns corresponding template, and/or returns corresponding images. 
+the products supported by MA5G_generic_commands.bioface_enroll function are VISIONPASS AND VISIONPASS SP but it does not support MA SIGMA, MA LITE+, MA LITE, MORPHOWAVE, MA EXTREME, MORPHOWAVE COMPACT, MORPHOWAVE SP.
+
+
+
+
+Function: MA5G_generic_commands.PIN_authenticate_db
+bool PIN_authenticate_db(i32 timeout_in_sec,
+                         string user_id_UTF8)    throws Generic_types.Invalid_argument_error, Generic_types.Generic_error
+
+this function/command Authenticates an user using its PIN code stored in terminal database 
+this function/command makes the User enter a PIN code on the terminal keypad. 
+this function will Return true, if the code keyed by the user matches the database user's PIN code, otherwise false
+the products supported by MA5G_generic_commands.PIN_authenticate_db function are MA SIGMA, MA LITE+, MORPHOWAVE, MA EXTREME, MORPHOWAVE COMPACT, VISIONPASS, VISIONPASS SP but does not support MA LITE AND MORPHWAVE SP.
+
+
+
+Function: MA5G_generic_commands.reset_factory_settings
+void reset_factory_settings(list<Generic_types.Terminal_reset_settings_type> list_of_settings)
+    throws Generic_types.Generic_error, Generic_types.Invalid_argument_error
+
+this function/parameter Resets selected parameters to factory settings.
+
+
+
+
+
+Function: MA5G_generic_commands.user_DB_get_status
+Db_types.DB_status user_DB_get_status(Db_types.User_type type)
+    throws Generic_types.Generic_error
+this function/command Gets the user's database status and Returns the database capacity and number of records. 
+
+
+Function: MA5G_generic_commands.user_DB_get_fields
+set<Db_types.User_DB_fields> user_DB_get_fields()
+    throws Generic_types.Generic_error
+this function/command Gets the available fields. This command returns the list of available user fields in the terminal database. Return the list of available user fields. 
+
+
+Function: MA5G_generic_commands.user_DB_set_users
+void user_DB_set_users(map<string, Db_types.User_DB_record> users,
+                       bool enable_similar_finger_check)
+    throws Db_types.DB_full_error, Db_types.User_DB_unavailable_field, Generic_types.Invalid_argument_error, Bio_types.Duplicated_finger_error, Db_types.DB_duplicate_record_error, Generic_types.Generic_error, Generic_types.SD_card_not_found, Bio_types.Unsupported_format_error)
+
+this function/command Adds or modify one or more user records in the database. Only the fields which are present in the DB_record structure will be modified. 
+
+Warning: If the command is used to set non compressed templates, they all shall be of the same type. users list should be limited to 100 entries otherwise terminal may misbehave. 
+
+
+Function: MA5G_generic_commands.user_DB_delete_records
+map<string, bool> user_DB_delete_records(set<string> user_IDs_UTF8)
+    throws Generic_types.Generic_error
+this function/command Deletes one or more user record from the terminal database. If a user is not found, no error is reported. 
+
+
+Function: MA5G_generic_commands.user_DB_delete_all_records
+void user_DB_delete_all_records()
+    throws Generic_types.Generic_error
+this function/command Deletes all user records from the terminal database 
+
+
+
+Function: MA5G_generic_commands.user_DB_get_users
+map<string, Db_types.User_DB_record> user_DB_get_users(set<string> user_IDs_UTF8,
+                                                     set<Db_types.User_DB_fields> requested_fields)
+    throws Generic_types.Invalid_argument_error, Generic_types.Generic_error
+this function/command Returns one or more user records. The list of user ID shall be limited to 100 items max. this function will Return a map of UserIDs and their corresponding records. If a UserID is not found, it will not be present in the returned map. 
+
+
+Function: MA5G_generic_commands.user_DB_get_user_IDs
+set<string> user_DB_get_user_IDs(Db_types.User_type type)
+    throws Generic_types.Generic_error
+this function/command Returns the list of all user IDs (UTF8 string) present in terminal database based on user type 
+Note: For the moment, only the users ID of users in biometric database or in white list can be retrieved.
+
+
+
+
+ 
+Function: MA5G_generic_commands.dynamic_message_set
+void dynamic_message_set(map<string, Db_types.Dynamic_msg_DB_record> dm_list)
+    throws Generic_types.Invalid_argument_error, Generic_types.SD_card_not_found, Generic_types.Generic_error
+
+this function/command Sets dynamic message of users. 
+while using this command/function, Dynamic messages list should be limited to 500 entries otherwise terminal may misbehave. 
+the products supported by MA5G_generic_commands.dynamic_message_set function are MA SIGMA, MORPHOWAVE, MA EXTREME, MORPHOWAVE COMPACT, VISIONPASS, VISIONPASS SP but does not support MA LITE+, MA LITE AND MORPHOWAVE SP
+
+
+
+
+Function: MA5G_generic_commands.dynamic_message_get
+map<string, Db_types.Dynamic_msg_DB_record> dynamic_message_get(set<string> user_IDs_UTF8)
+    throws Generic_types.Invalid_argument_error, Generic_types.SD_card_not_found, Generic_types.Generic_error
+
+this function/command Gets dynamic message of users. while using this function, User IDs list should be limited to 500 entries otherwise terminal may misbehave. 
+this function/command Returns the list of read files/data 
+the products supported by MA5G_generic_commands.dynamic_message_get function are MA SIGMA, MORPHOWAVE, MA EXTREME, MORPHOWAVE COMPACT, VISIONPASS, VISIONPASS SP but does not support MA LITE+, MA LITE AND MORPHOWAVE SP
+
+
+
+
+Function: MA5G_generic_commands.dynamic_message_reset
+void dynamic_message_reset(set<string> user_IDs_UTF8)    throws Generic_types.Invalid_argument_error, Generic_types.SD_card_not_found, Generic_types.Generic_error
+
+this function/command Resets dynamic message data of users. 
+the products supported by MA5G_generic_commands.dynamic_message_reset function are MA SIGMA, MORPHOWAVE, MA EXTREME, MORPHOWAVE COMPACT, VISIONPASS, VISIONPASS SP but does not support MA LITE+, MA LITE AND MORPHOWAVE SP
+
+
+
+
+
+Function: MA5G_generic_commands.dynamic_message_get_user_IDs
+set<string> dynamic_message_get_user_IDs()    throws Generic_types.SD_card_not_found, Generic_types.Generic_error
+
+this function/command Returns the list of all user IDs (UTF8 string) present in terminal database having dynamic message.
+the products supported by MA5G_generic_commands.dynamic_message_get_user_IDs function are MA SIGMA, MORPHOWAVE, MA EXTREME, MORPHOWAVE COMPACT, VISIONPASS, VISIONPASS SP but does not support MA LITE+, MA LITE AND MORPHOWAVE SP
+
+
+
+
+
+
+Function: MA5G_generic_commands.external_db_get_id
+string external_db_get_id()
+    throws Generic_types.Generic_error
+this function/command Gets id from terminal polling buffer for external database verification. 
+this function/command will Return id for external database verification 
+
+
+
+Function: MA5G_generic_commands.external_db_verify_user
+Generic_types.Verify_result_code external_db_verify_user(string user_id_UTF8,
+                                                         Db_types.User_DB_record user_data)
+    throws Generic_types.Generic_error, Generic_types.SD_card_not_found, Generic_types.Invalid_argument_error, Bio_types.Unsupported_format_error)
+this function/command will Verify external database user data. 
+
+
+
+Function: MA5G_generic_commands.external_db_clear_id
+void external_db_clear_id()
+    throws Generic_types.Generic_error
+this function/command Clears the id from terminal polling buffer 
+
+
+
+
+
+Function: MA5G_generic_commands.mc_write
+void mc_write(i32 timeout_in_sec, Mc_types.Mc_card_info card)
+    throws Generic_types.Timeout_error, Generic_types.Invalid_argument_error, Generic_types.Generic_error
+
+this function/command Write files as a card on mobile phone. 
+the product(s) supported by MA5G_generic_commands.mc_write function is MORPHOWAVE COMPACT but it does not support MA SIGMA, MA LITE+, MA LITE, MORPHOWAVE, MA EXTREME, VISIONPASS, MORPHOWAVE SP, VISIONPASS SP
+
+
+
+
+Function: MA5G_generic_commands.cls_get_info
+Cls_types.Cls_info cls_get_info(i32 timeout_in_sec)
+    throws Generic_types.Timeout_error, Generic_types.Generic_error
+
+
+this function/command Gets contactless card information containing the Smartcard CSN as per the configuration, whether Standard CSN or Reverse CSN 
+the products supported by MA5G_generic_commands.cls_get_info are MA SIGMA, MA LITE+, MA LITE, MA EXTREME, MORPHOWAVE COMPACT, VISIONPASS, MORPHOWAVE SP, VISIONPASS SP but it does not support MORPHOWAVE
+
+
+
+
+Function: MA5G_generic_commands.cls_write
+void cls_write(i32 timeout_in_sec,
+               Cls_types.Cls_cards_definition cards)    throws Generic_types.Timeout_error, Generic_types.Invalid_argument_error, Cls_types.Cls_invalid_key_error, Generic_types.Generic_error
+this function/command Write files on a contactless card. 
+the products supported by MA5G_generic_commands.cls_write are MA SIGMA, MA LITE+, MA LITE, MA EXTREME, MORPHOWAVE COMPACT, VISIONPASS, MORPHOWAVE SP, VISIONPASS SP but it does not support MORPHOWAVE
+
+
+Function: MA5G_generic_commands.cls_write_user_card
+void cls_write_user_card(i32 timeout_in_sec,
+                         Cls_types.Cls_user_card card_data)
+    throws Generic_types.Timeout_error, Generic_types.Invalid_argument_error, Generic_types.Generic_error, Bio_types.Unsupported_format_error
+this function/command Encodes an user contactless card. The card is encoded according to terminal configuration. The card will contains fields required for access on Morpho terminals. This command supports only pkcompv2 template data write on card. 
+the products supported by MA5G_generic_commands.cls_write_user_card are MA SIGMA, MA LITE+, MA LITE, MA EXTREME, MORPHOWAVE COMPACT, VISIONPASS, MORPHOWAVE SP, VISIONPASS SP but it does not support MORPHOWAVE
+
+
+
+
+
+Function: MA5G_generic_commands.cls_write_admin_card
+void cls_write_admin_card(i32 timeout_in_sec, Cls_types.Cls_card_type card_type)    
+	throws Generic_types.Timeout_error, Generic_types.Invalid_argument_error, 			 	 	Cls_types.Cls_invalid_card_type_error, Generic_types.Generic_error
+this function/command Encodes an admin contactless card. The card is encoded according to terminal configuration. The card will contain the new contactless keys to load on other Morpho terminals. 
+the products supported by MA5G_generic_commands.cls_write_admin_card are MA SIGMA, MA LITE+, MA LITE, MA EXTREME, MORPHOWAVE COMPACT, VISIONPASS, MORPHOWAVE SP, VISIONPASS SP but it does not support MORPHOWAVE
+
+
+
+
+Function: MA5G_generic_commands.cls_erase
+void cls_erase(i32 timeout_in_sec,
+               Cls_types.Cls_cards_definition cards)    throws Generic_types.Timeout_error, Generic_types.Invalid_argument_error, Cls_types.Cls_invalid_key_error, Generic_types.Generic_error
+this command/function Erases a contactless card 
+For DESFire cards, according to the cards definition, this command will erase either one or several files, either one or several applications or will format the card.
+In case of card formatting, the master PICC key will be set to 3DES legacy default value. 
+
+For MIFARE cards, this command will set every writable sectors to 0xFF.
+Sector keys will be set to NXP default keys (0x00). 
+the products supported by MA5G_generic_commands.cls_erase are MA SIGMA, MA LITE+, MA LITE, MA EXTREME, MORPHOWAVE COMPACT, VISIONPASS, MORPHOWAVE SP, VISIONPASS SP but it does not support MORPHOWAVE
+
+
+
+
+
+Function: MA5G_generic_commands.key_load
+void key_load(Cls_types.Crypto_keys crypto_keys)    throws Cls_types.Cls_invalid_key_error, Generic_types.Generic_error, Generic_types.Invalid_argument_error
+this command will Load keys for the following cards: 
+- For MIFARE cards, this command will load CRYPTO1 (MIFARE Classic) and/or AES (MIFARE Plus) keys.
+- For DESFire cards, this command will load 3DES and/or AES keys.
+- For iClass cards, this command will load the iClass key.
+- For RSA, this command will load the RSA key(s).
+- For l1 cards, this command will load the L1 site key.
+- For USB script, this command will load the USB script key.
+- For OSDP secure channel, this command will load the SCBK.
+- For SEOS cards, this command will load AES keys. 
+- For SSCP protocol, this command will load the key for next authentication with controller. 
+
+
+
+
+Function: MA5G_generic_commands.key_reset
+void key_reset(list<Cls_types.Cls_card_type> types)    throws Generic_types.Invalid_argument_error, Generic_types.Generic_error
+this function/command Restores default contactless keys
+- For MIFARE cards, this command will restore all MIFARE Classic and/or MIFARE Plus keys to default value.
+- For DESFire cards, this command will restore all DESFire 3DES and/or DESFire AES keys to default value.
+- For iClass cards, this command will restore the default iClass key.
+- For SEOS cards, this command will restore the default SEOS key.
+
+
+
+
+
+Function: MA5G_generic_commands.cls_process_special_card
+void cls_process_special_card(i32 timeout_in_sec, Cls_types.Cls_special_card_type card_type)
+    throws Generic_types.Timeout_error, Generic_types.Invalid_argument_error, Cls_types.Cls_invalid_card_type_error, Generic_types.Generic_error, Generic_types.Cancelled_error
+this function/command Reads and processes special types of card.
+As of now, this command supports HID Keyroller card and HID configuration card. 
+the products supported by MA5G_generic_commands.cls_process_special_card are MA SIGMA, MA LITE+, MA LITE, MA EXTREME, MORPHOWAVE COMPACT, VISIONPASS, MORPHOWAVE SP, VISIONPASS SP but it does not support MORPHOWAVE
+
+
+
+
+Function: MA5G_generic_commands.terminal_get_configuration
+Generic_types.Terminal_configuration terminal_get_configuration(Generic_types.Terminal_configuration_type terminal_settings_type)
+    throws Generic_types.Ethernet_config_not_found, Generic_types.WIFI_module_not_connected, Generic_types.License_not_found, Generic_types.Generic_error, Generic_types.Invalid_argument_error
+
+this command/function is used to retrieve information like Terminal's local date and time,
+Terminal's IP configuration 
+,Terminal's WIFI configuration 
+,Terminal's GPRS configuration 
+,Terminal's serial channel configuration 
+
+
+
+Function: MA5G_generic_commands.time_get_predefined_time_zone_list
+set<string> time_get_predefined_time_zone_list()    
+	throws Generic_types.Generic_error
+this function/command Returns a list of UTF-8 strings that represents predefined time zones handled by the terminal.
+The terminal contains a list of predefined time zones that can be used to configure terminal's date and time (see terminal_set_configuration). 
+
+
+
+Function: MA5G_generic_commands.distant_session_set_state
+void distant_session_set_state(Generic_types.Distant_session_state state)
+    throws Generic_types.Generic_error
+this function/command Opens or closes a distant session. When a distant session is opened, the terminal only waits for distant commands. No local operation can be done. 
+Generic_error will be returned by this function/command if we set Distant session state as Open while Live identification/authentication is already in progress.
+
+
+
+
+Function: MA5G_generic_commands.distant_session_set_state_advanced
+Generic_types.Get_distant_session_state distant_session_set_state_advanced(Generic_types.Distant_session_state state,
+                                                                           Generic_types.Distant_session_optional_param optional_param)
+    throws Generic_types.Generic_error
+this function/command Opens or closes a distant session 
+Enable or disable the display message using this function/command
+When display message is enabled with open session, the users are informed that the terminal is not "usable" for access. 
+
+Note
+It is not recommended to use this command with "OFF" value for "display_message",
+without displaying any text/message, as it can give the impression to end user that the terminal
+is frozen, when he would interact with terminal during distant session Return the distant session's states before execution and after execution of command. 
+
+
+
+
+Function: MA5G_generic_commands.distant_session_get_state
+Generic_types.Distant_session_state distant_session_get_state()
+    throws Generic_types.Generic_error
+this function/command Gets the terminal's distant session state (opened or closed)
+When a distant session is opened by this command, the terminal only waits for distant commands. No local operation can be done. 
+
+
+
+Function: MA5G_generic_commands.cancel_operation
+void cancel_operation()   
+	throws Generic_types.Generic_error
+this function/command Cancels the current delayed command 
+
+
+
+
+Function: MA5G_generic_commands.terminal_switch_protocol
+Generic_types.Terminal_protocol terminal_switch_protocol(Generic_types.Terminal_protocol protocol)
+    throws Generic_types.Generic_error
+this function/command Switches the terminal protocol to the specified one. 
+this function/command Returns the current terminal protocol (while this command has not changed the protocol). 
+Note: The terminal protocol change shall come in effect only after the terminal reboot. Since firmware version 4.5 it is only possible to retrieve current protocol, changing protocol is no more available. 
+the products supported by this function are MA SIGMA, MA LITE+, MA LITE and MA EXTREME but it does not support MORPHOWAVE, MORPHOWAVE COMPACT VISIONPASS, MORPHOWAVE SP, VISIONPASS SP
+
+
+
+
+Function: MA5G_generic_commands.get_terminal_capabilities
+map<Generic_types.Capability, list<Generic_types.Variant>> get_terminal_capabilities(set<Generic_types.Capability> capability_list)
+    throws Generic_types.Generic_error, Generic_types.Invalid_argument_error
+this function/command Gets the specified capabilities of the terminal. 
+
+
+
+Function: MA5G_generic_commands.wiegand_clock_data_send_string
+void wiegand_clock_data_send_string(binary data_to_send)    
+	throws Generic_types.Invalid_wiegand_string, Generic_types.Wiegand_output_disabled, Generic_types.Generic_error
+this function/command Sends wiegand or clock&data string 
+
+
+
+
+Function: MA5G_generic_commands.wiegand_clock_data_send_and_read_status
+Controller_types.Controller_response wiegand_clock_data_send_and_read_status(Controller_types.Send_ctrl_params send_ctrl_params, Controller_types.Read_ctrl_params read_ctrl_params)
+    throws Generic_types.Invalid_wiegand_string, Generic_types.Wiegand_output_disabled, Generic_types.Timeout_error, Generic_types.Generic_error
+
+this function/command Sends wiegand or clock&data string and wait for an answer from the LED1/LED2 lines until a timeout 
+the products supported by the MA5G_generic_commands.wiegand_clock_data_send_and_read_status function are MA SIGMA MA LITE+, MA LITE, MA EXTREME but does not support MORPHOWAVE, MORPHOWAVE COMPACT, VISIONPASS, MORPHWAVE SP, VISIONPASS SP
+
+
+
+
+
+Function: MA5G_generic_commands.display_text
+void display_text(string message_text, Generic_types.XY_coordinates coordinates, i32 duration_in_sec)    
+	throws Generic_types.Invalid_argument_error, Generic_types.Generic_error
+this function/command Displays a text message 
+this function will make The terminal display a text message on the screen.
+The text message will start at the specified coordinates and will be displayed during the specified duration.
+Min-Max range for duration is (0-255 seconds) where 0 = infinite time.
+Min-Max range for X- co-ordinate and Y- co-ordinate is dependent on terminal LCD resolution and orientation.
+the products supported by the MA5G_generic_commands.display_text are MA SIGMA, MA LITE+, MORPHOWAVE, MA EXTREME, MORPHOWAVE COMPACT, VISIONPASS, VISIONPASS SP but does not support MA LITE AND MORPHOWAVE SP
+
+
+
+
+Function: MA5G_generic_commands.display_text_advanced
+void display_text_advanced(string message_text, Generic_types.XY_coordinates coordinates, i32 duration_in_sec,                           Generic_types.Display_text_optional_param display_text_optional_param)
+    throws Generic_types.Invalid_argument_error, Generic_types.Generic_error
+this function/command provides more options to display text on screen.
+the products supported by the MA5G_generic_commands.display_text_advanced are MA SIGMA, MA LITE+, MA EXTREME, MORPHOWAVE COMPACT, VISIONPASS, VISIONPASS SP but does not support MA LITE, MORPHOWAVE AND MORPHOWAVE SP
+
+
+
+Function: MA5G_generic_commands.file_get
+File_types.File_chunk file_get(File_types.File_details file_details)
+    throws Generic_types.File_inexistent_error, Generic_types.SD_card_not_found, Generic_types.Generic_error, Generic_types.Invalid_argument_error
+this function/command Retrieves a file from the terminal.
+
+
+
+Function: MA5G_generic_commands.file_get_filenames
+list<File_types.File_details> file_get_filenames(File_types.File_type file_type)
+    throws Generic_types.File_inexistent_error, Generic_types.Generic_error, Generic_types.Invalid_argument_error
+this function/command Retrieves all the files name for a given file type 
+this function/command Returns list of structure for files' details 
+
+
+
+Function: MA5G_generic_commands.get_sdac_status
+Generic_types.Sdac_status get_sdac_status()
+    throws Generic_types.Generic_error
+this function/command Returns a structure containing 4 integers. The values in list are as following: 
+SDAC mode : 0=Off, 1=On 
+Relay state : 0=Door locked, 1=Door unlocked 
+Door status : 0=Closed, 1=Open, -1=Error 
+Request to exit state : 0=Off, 1=On, -1=Error 
+
+
+
+Function: MA5G_generic_commands.trigger_relay
+void trigger_relay(i32 duration_in_sec)
+    throws Generic_types.Invalid_argument_error, Generic_types.Generic_error
+this function/command Triggers the relay for a given duration. 
+Note: A duration less or equal to 0 is forbidden. 
+
+
+
+
+Function: MA5G_generic_commands.authorized_IP_get_list
+list<string> authorized_IP_get_list(Generic_types.IP_protocol_type ip_protocol_type)
+    throws Generic_types.Generic_error
+this function/command Returns a list of string of authorized IPs 
+
+
+
+
+Function: MA5G_generic_commands.authorized_IP_add
+void authorized_IP_add(string str_ip)
+    throws Db_types.DB_full_error, Generic_types.Invalid_argument_error, Generic_types.Generic_error
+this function/command Adds an authorized IP to communicate with 
+
+
+
+Function: MA5G_generic_commands.authorized_IP_delete
+void authorized_IP_delete(string str_ip)
+    throws Generic_types.Invalid_argument_error, Generic_types.Generic_error
+this function/command Removes an authorized IP 
+
+
+
+Function: MA5G_generic_commands.authorized_IP_get_range_list
+list<string> authorized_IP_get_range_list(Generic_types.IP_protocol_type ip_protocol_type)
+    throws Generic_types.Generic_error
+this function/command will Return a list of string of authorized IP ranges 
+
+
+
+Function: MA5G_generic_commands.authorized_IP_add_range
+void authorized_IP_add_range(string str_start_ip,
+                             string str_end_ip)
+    throws Db_types.DB_full_error, Generic_types.Invalid_argument_error, Generic_types.Generic_error
+this function/command will Add an authorized IP range to communicate with 
+
+
+
+Function: MA5G_generic_commands.authorized_IP_delete_range
+void authorized_IP_delete_range(string str_start_ip,
+                                string str_end_ip)
+    throws Generic_types.Invalid_argument_error, Generic_types.Generic_error
+this function/command will Remove an authorized IP range 
+
+
+
+Function: MA5G_generic_commands.password_set
+bool password_set(Security_types.Sec_obj_ID id,
+                  string password_old,
+                  string password_new)
+    throws Generic_types.Security_default_password, Generic_types.Invalid_argument_error, Generic_types.Generic_error
+this function/command is used To set a password. This function will Return true, if set successfully. 
+
+
+
+
+Function: MA5G_generic_commands.password_verify
+bool password_verify(Security_types.Sec_obj_ID id,
+                     string password)
+    throws Generic_types.Invalid_argument_error, Generic_types.Security_default_password, Generic_types.Generic_error
+this function/command is used To verify a given password with stored password and Return true, if verified
+successfully. 
+
+
+
+
+Function: MA5G_generic_commands.password_reset
+bool password_reset(Security_types.Sec_obj_ID id)
+    throws Generic_types.Invalid_argument_error, Generic_types.Generic_error
+this function is used To reset a password. this function/command will Return true, if reset successfully. 
+
+
+
+
+Function: MA5G_generic_commands.passphrase_set
+bool passphrase_set(Security_types.Passphrase_id id,
+                    string passphrase)
+    throws Generic_types.Invalid_argument_error, Generic_types.Generic_error
+this function/command is used To set a passphrase and it Returns true, if set successfully. 
+
+
+
+
+Function: MA5G_generic_commands.passphrase_reset
+bool passphrase_reset(Security_types.Passphrase_id id)
+    throws Generic_types.Invalid_argument_error, Generic_types.Generic_error
+this function/command is used To reset a passphrase. this command will Return true, if reset successfully. 
+
+NOTE: This will reset both certificate and passphrase to their default value. 
+
+
+
+
+
+Function: MA5G_generic_commands.retrieve_keypad_input
+string retrieve_keypad_input(i32 timeout_in_sec)    
+	throws Generic_types.Cancelled_error, Generic_types.Timeout_error, Generic_types.Generic_error, Generic_types.Invalid_argument_error
+this function/command is used To get user input from LCD GUI and Return entered input from terminal
+the products supported by MA5G_generic_commands.retrieve_keypad_input are MA SIGMA, MA LITE+, MORPHOWAVE, MA EXTREME, MORPHOWAVE COMPACT VISIONPASS AND VISIONPASS SP but does not support MA LITE and MORPHOWAVE SP
+
+
+
+Function: MA5G_generic_commands.retrieve_keypad_input_advanced
+Generic_types.Keypad_input retrieve_keypad_input_advanced(Generic_types.Keypad_optional_param keypad_optional_param)
+    throws Generic_types.Cancelled_error, Generic_types.Timeout_error, Generic_types.Generic_error, Generic_types.Invalid_argument_error
+
+this function/command is used To get user input from LCD GUI with custom message and Return entered input on keypad from terminal
+the products supported by MA5G_generic_commands.retrieve_keypad_input_advanced function are MA SIGMA, MA EXTREME, MORPHOWAVE COMPACT, VISIONPASS, VISIONPASS SP but does not support MA LITE+, MA LITE, MORPHOWAVE and MORPHOWAVE SP
+
+
+
+
+Function: MA5G_generic_commands.access_schedule_retrieve
+list<Db_types.Access_schedule> access_schedule_retrieve(list<byte> schedule_index)
+    throws Db_types.Invalid_schedule_index, Config_types.Config_inexistent_parameter_error, Generic_types.Generic_error
+this Command/function is used to get the access schedule entries. 
+this command Returns list of access_schedule data according to schedule_index. List of Access_schedule provides data from Sunday to Saturday. 
+
+
+
+Function: MA5G_generic_commands.access_schedule_store
+void access_schedule_store(list<Db_types.Access_schedule> schedule_data)
+    throws Db_types.Invalid_schedule_index, Config_types.Config_inexistent_parameter_error, Config_types.Config_invalid_value_error, Generic_types.Generic_error
+this function/Command is used to set the access schedule entries. 
+
+Function: MA5G_generic_commands.access_schedule_delete
+void access_schedule_delete(list<byte> schedule_index)    throws Db_types.Invalid_schedule_index, Config_types.Config_inexistent_parameter_error, Config_types.Config_invalid_value_error, Generic_types.Generic_error
+this function/Command is used to reset the access schedule entries. 
+
+Function: MA5G_generic_commands.door_open_schedule_retrieve
+list<Db_types.Door_open_schedule> door_open_schedule_retrieve()
+    throws Config_types.Config_inexistent_parameter_error, Generic_types.Generic_error
+this function/Command is used to get the door open schedule entries. 
+this function Returns list of Door_open_schedule data. List of Door_open_schedule provides data from Sunday to Saturday. 
+
+
+Function: MA5G_generic_commands.door_open_schedule_store
+void door_open_schedule_store(list<Db_types.Door_open_schedule> schedule_data)
+    throws Config_types.Config_inexistent_parameter_error, Config_types.Config_invalid_value_error, Generic_types.Generic_error
+this function/Command is used to set the door open schedule entries. 
+
+Function: MA5G_generic_commands.door_open_schedule_delete
+void door_open_schedule_delete()    
+throws Config_types.Config_inexistent_parameter_error, Config_types.Config_invalid_value_error, Generic_types.Generic_error
+this function/Command is used to reset the door open schedule entries. 
+
+
+Function: MA5G_generic_commands.holiday_schedule_retrieve
+list<Db_types.Holiday_schedule> holiday_schedule_retrieve(list<byte> schedule_index)
+    throws Db_types.Invalid_schedule_index, Config_types.Config_inexistent_parameter_error, Generic_types.Generic_error
+this function/Command is used to get the Holiday schedule entries and Returns list of Holiday schedule data according to index 
+
+
+
+
+Function: MA5G_generic_commands.holiday_schedule_store
+void holiday_schedule_store(list<Db_types.Holiday_schedule> schedule_data)
+    throws Db_types.Invalid_schedule_index, Config_types.Config_inexistent_parameter_error, Config_types.Config_invalid_value_error, Generic_types.Generic_error
+this function/Command is used to set the holiday schedule entries. 
+
+
+
+Function: MA5G_generic_commands.holiday_schedule_delete
+void holiday_schedule_delete(list<byte> schedule_index)    
+throws Db_types.Invalid_schedule_index, Config_types.Config_inexistent_parameter_error, Config_types.Config_invalid_value_error, Generic_types.Generic_error
+this function/Command is used to reset the holiday schedule entries. 
+
+
+
+Function: MA5G_generic_commands.scan_WIFI_networks
+list<Generic_types.WIFI_network_info> scan_WIFI_networks()
+    throws Generic_types.WIFI_module_not_connected, Generic_types.License_not_found, Generic_types.Generic_error
+this function/Command is used to scan WIFI networks Return list of WIFI_network_info which contains network informations 
+the products supported by MA5G_generic_commands.scan_WIFI_networks function are MA SIGMA, MA LITE+, MA LITE, MA EXTREME, MORPHOWAVE COMPACT, VISIONPASS, MORPHOWAVE SP but does not support MORPHWAVE and VISIONPASS SP
+
+
+Function: MA5G_generic_commands.events_set_config
+void events_set_config(map<Db_types.Transaction_log_action_code, Generic_types.Event_config> events)
+    throws Generic_types.Invalid_argument_error, Generic_types.Generic_error
+this function/command is used to Set one or more event configurations like tlac_duress_finger_detected, tlac_fake_finger_detected, etc
+
+
+
+
+Function: MA5G_generic_commands.events_get_config
+map<Db_types.Transaction_log_action_code, Generic_types.Event_config> events_get_config(set<Db_types.Transaction_log_action_code> event_IDs)
+    throws Generic_types.Invalid_argument_error, Generic_types.Generic_error
+this function/command is used to Retrieve one or more event configuration. this function Returns a map of Event IDs and their corresponding records.
+
+
+
+Function: MA5G_generic_commands.licenses_add
+void licenses_add(binary license)
+    throws Generic_types.Invalid_argument_error, Generic_types.SD_card_not_found, Generic_types.Generic_error
+this command/function Adds license(s) to terminal Note
+To add multiple licenses, they must be separated by CRLF characters (0x0D, 0x0A).
+
+
+Function: MA5G_generic_commands.licenses_get
+list<string> licenses_get()    
+	throws Generic_types.Generic_error
+this command/function Retrieves the list of the licenses stored in the terminal Return a list of the licenses contained in the terminal (empty list if the terminal doesn't contain license) 
+
+Function: MA5G_generic_commands.config_get_video_phone_params
+list<Generic_types.Video_phone_params> config_get_video_phone_params()
+    throws Generic_types.Generic_error
+this function/command is used to get  list of video phone profiles
+the products supported by MA5G_generic_commands.config_get_video_phone_params function are MA SIGMA, MORPHOWAVE, MA EXTREME, MORPHOWAVE COMPACT but does not support MA LITE+, MA LITE, VISIONPASS, MORPHOWAVE SP and VISIONPASS SP
+
+
+
+Function: MA5G_generic_commands.config_set_video_phone_params
+void config_set_video_phone_params(list<Generic_types.Video_phone_params> params_video_phone)
+    throws Generic_types.Invalid_IP_error, Generic_types.Invalid_size_error, Config_types.Config_invalid_value_error, Generic_types.Generic_error
+
+this function/command Sets the list of video phone profiles.
+Only Audio is supported in terminal where face camera is not available. 
+A maximum of 20 profiles shall be stored. 
+If the number of profiles stored is less than 20, say 15, a fresh copy of the profiles, the 15 which are provided, and the remaining 5 blank profiles shall be stored.
+For any GUI application, the blank profiles are like empty slots, which may not be required to be displayed. 
+To erase all profiles, the parameter params_video_phone with zero size must be passed. 
+To edit one or more profiles, and set them, the remaining profiles shall be preserved only if the latter profiles are again provided to set as is.
+For instance, if you want to edit profiles #2 and #3, get all the profiles (via config_get_video_phone_params), edit the profiles of interest (profile #2 and #3), and using this API, set all the 20 profiles back. This way, the profiles other than profiles #2 and #3 are preserved and not deleted. In case you pass only profiles #2 and #3 to this API, the rest of the profiles shall be stored as blank profiles, i.e., effectively deleting them. 
+Any profile entry with all of its parameters empty, i.e., empty strings and 0 for Video_phone_params.port, shall be considered as a blank profile (empty slot). 
+Any profile entry with not all of its parameters empty shall throw appropriate exception. 
+the products supported by the MA5G_generic_commands.config_set_video_phone_params are MA SIGMA, MORPHOWAVE, MA EXTREME, MORPHOWAVE COMPACT but does not support MA LITE+, MA LITE, VISIONPASS, MORPHOWAVE SP and VISIONPASS SP
+
+
+
+
+
+Function: MA5G_generic_commands.send_to_host
+void send_to_host(Generic_types.Host_configuration host_config,
+                  binary data)
+    throws Generic_types.Invalid_argument_error, Generic_types.Host_not_found, Generic_types.Generic_error
+this function/command is used to send data to host on IP network or on serial channel 
+
+
+
+
+Function: MA5G_generic_commands.retrieve_language_file_list
+list<string> retrieve_language_file_list()    
+	throws Generic_types.Generic_error
+this function/command Retrieves the list of language files stored in terminal Return a list of string of the language files 
+the products supported by the MA5G_generic_commands.retrieve_language_file_list function are MA SIGMA, MORPHOWAVE, MA EXTREME, MORPHOWAVE COMPACT, VISIONPASS and VISIONPASS SP but does not support MA LITE+, MA LITE and MORPHWAVE SP
+
+
+
+Function: MA5G_generic_commands.start_firmware_upgrade
+void start_firmware_upgrade(File_types.Upgrade_type type)    
+	throws Generic_types.Biometric_sensor_incompatible_version_error, Generic_types.File_inexistent_error, Generic_types.Invalid_argument_error, Generic_types.Generic_error
+this function/command Starts Firmware upgrade process 
+the products supported by the MA5G_generic_commands.start_firmware_upgrade function is MORPHOWAVE but does not support other products that are MA SIGMA, MA LITE+, MA LITE, MA EXTREME, MORPHOWACE COMPACT, VISIONPASS, MORPHOWAVE SP and VISIONPASS SP
+
+
+
+
+
+Function: MA5G_generic_commands.MMI_play
+void MMI_play(Generic_types.MMI_config mmi_config)
+    throws Generic_types.Invalid_argument_error, Generic_types.Generic_error
+This command performs user control successful or fail MMI operation (audio/buzzer/GUI message) on the terminal. 
+the products supported by MA5G_generic_commands.MMI_play function are MA SIGMA, MA LITE+, MA LITE, MA EXTREME, MORPHOWAVE COMPACT, VISIONPASS, MORPHOWAVE SP and VISIONPASS SP
+
+
+
+Function: MA5G_generic_commands.MMI_play_advanced
+void MMI_play_advanced(Generic_types.MMI_play_params mmi_play_params)
+    throws Generic_types.Invalid_argument_error, Generic_types.Generic_error
+The command shall perform user control successful or fail MMI operation (audio/buzzer/GUI message) on the terminal with optional additional operations (Sound Configuration/Relay Configuration/Display Configuration/Text Config). 
+the products supported by the MA5G_generic_commands.MMI_play_advanced function are MA SIGMA, MA LITE+, MA LITE, MORPHOWAVE COMPACT, VISIONPASS, MORPHOWAVE SP and VISIONPASS SP but does not support MORPHOWAVE AND MA EXTREME.
+
+
+
+
+Function: MA5G_generic_commands.picture_code_2D_template
+Bio_types.User_templates picture_code_2D_template(File_types.File_details file_details,
+                                                  File_types.File_chunk chunk)
+    throws Generic_types.File_name_missing_error, Generic_types.Invalid_file_extension_error, Generic_types.Invalid_argument_error, Generic_types.Generic_error
+
+this function/command is used to convert the JPEG/JPG and PNG images into a face_v2 template.
+the products supported by the MA5G_generic_commands.picture_code_2D_template function is VISIONPASS but does not support MA SIGMA, MA LITE+, MA LITE, MORPHOWAVE, MA EXTREME, MORPHOWAVE COMPACT, MORPHOWAVE SP and VISIONPASS SP
+
+
+
+Function: MA5G_generic_commands.file_commit
+Generic_types.Commit_operation_reply file_commit(File_types.File_details file_details,
+                                                 bool reboot_on_success)
+    throws Generic_types.Invalid_argument_error, Generic_types.File_name_missing_error, Generic_types.File_inexistent_error, Generic_types.Invalid_file_name_found_error, Generic_types.File_commit_error, Generic_types.Generic_error
+
+This command/function will apply the certificate and passphrase installed through command file_load over a secure connection. The session established by the received file_load and passphrase_set, will facilitate the file_commit command 
+This command will only work if file_load and passphrase_set have both been received by the terminal. There is no restriction on the order of the files to load. If certificate and passphrase are installed through TCP channel, this command does nothing. 
+
+
+
+
+Function: MA5G_generic_commands.terminal_get_FW_information
+Generic_types.Terminal_fw_info terminal_get_FW_information()
+    throws Generic_types.Generic_error
+
+This function/command is used to return the firmware information. 
+the products supported by MA5G_generic_commands.terminal_get_FW_information function are MORPHOWAVE COMPACT, VISIONPASS, MORPHOWAVE SP and VISIONPASS SP but does not support MA SIGMA, MA LITE+, MA LITE, MORPHOWAVE and MA EXTREME
+
+
+
+
+Function: MA5G_generic_commands.file_cancel
+void file_cancel(File_types.File_details file_details)    
+	throws Generic_types.Invalid_argument_error, Generic_types.Generic_error
+this function/command is used To rollback the certificate and passphrase uploaded but yet not committed 
+This command will only execute when file load and passphrase both have been received by the terminal. There is no restriction on the order of the file load and passphrase 
+the products supported by the MA5G_generic_commands.file_cancel are MA SIGMA, MA LITE+, MA LITE, MA EXTREME, MORPHOWAVE COMPACT, VISIONPASS, MORPHOWAVE SP, VISIONPASS but does not support MORPHOWAVE
+
+
+
+
+Function: MA5G_generic_commands.terminal_set_security_state
+void terminal_set_security_state(Security_types.Terminal_security_state terminal_set_security_state)
+    throws Generic_types.Invalid_argument_error, Generic_types.Generic_error
+this function/command is used To set terminal state to On-Demand security or Enforced Security mode 
+State transition will only be in effect after the reboot.
+the products supported by the MA5G_generic_commands.terminal_set_security_state are MA SIGMA, MA LITE+, MA LITE, MA EXTREME, MORPHOWAVE COMPACT, VISIONPASS, MORPHOWAVE SP, VISIONPASS but does not support MORPHOWAVE
+
+
+
+
+Function: MA5G_generic_commands.terminal_get_security_state
+Security_types.Terminal_security_state terminal_get_security_state()
+    throws Generic_types.Generic_error
+this command/function is used To get terminal security state 
+the products supported by the MA5G_generic_commands.terminal_get_security_state are MA SIGMA, MA LITE+, MA LITE, MA EXTREME, MORPHOWAVE COMPACT, VISIONPASS, MORPHOWAVE SP, VISIONPASS but does not support MORPHOWAVE
+
+
+
+Function: MA5G_generic_commands.terminal_hardreset
+void terminal_hardreset(bool keep_ethernet)    
+	throws Generic_types.Invalid_argument_error, Generic_types.Generic_error
+This command will bring terminal into factory default state. It will delete and re-initalize following content with default:
+1. All database(User DB, config DB, Transation logs etc.)
+2. All security settings (Terminal will come to the secure state with default Transport certificate and Smart Card keys etc.)
+3. Fonts
+4. StolenCardsList
+5. Images, Audio and Video files
+6. Dynamic messages, job code list
+Terminal reboot will be triggered internally by this command 
+the products supported by MA5G_generic_commands.terminal_hardreset function are MORPHOWAVE COMPACT and VISIONPASS but does not support MA SIGMA, MA LITE+, MA LITE, MORPHOWAVE, MA EXTREME, MORPHOWAVE SP and VISIONPASS SP
+
+
+
+
+
+Function: MA5G_generic_commands.terminal_prove_authenticity
+Security_types.Authenticity_params terminal_prove_authenticity(Security_types.Authenticity_params challenge)
+    throws Generic_types.Invalid_argument_error, Generic_types.Generic_error
+Command used to prove terminal's authenticity 
+the products supported by MA5G_generic_commands.terminal_prove_authenticity function are MORPHOWAVE SP and VISIONPASS SP but does not support MA SIGMA, MA LITE+, MA LITE, MORPHOWAVE, MA EXTREME, MORPHOWAVE COMPACT, VISIONPASS
+
+
+
+
+Function: MA5G_generic_commands.picture_code_2D_template_advanced
+list<Bio_types.User_templates> picture_code_2D_template_advanced(File_types.File_details file_details,
+                                                                 File_types.File_chunk chunk,
+                                                                 list<Bio_types.Bio_template> template_type_format)
+    throws Generic_types.File_name_missing_error, Generic_types.Invalid_file_extension_error, Generic_types.Invalid_argument_error, Bio_types.Conversion_image_error, Generic_types.Invalid_size_error, Generic_types.Generic_error
+this function/command is used To convert the JPEG/JPG and PNG images into face templates. 
+the products supported by the MA5G_generic_commands.picture_code_2D_template_advanced function is VISIONPASS SP but does not support MA Sigma MA Lite+ MA Lite MorphoWave MA Extreme MorphoWave Compact VisionPass and MorphoWave SP
+
+
+
+
+
+
+
