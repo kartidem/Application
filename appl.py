@@ -53,7 +53,7 @@ def get_text_chunks(raw_texts):
 
 def get_vectorstore(text_chunks):
     embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
-    vectorstore = FAISS.from_texts(text_chunks, embedding=embeddings, allow_dangerous_deserialization=True)
+    vectorstore = FAISS.from_texts(text_chunks, embedding=embeddings)
     vectorstore.save_local("faiss_index")
     return vectorstore
 
@@ -79,7 +79,7 @@ def handle_userinput(user_question):
 
 
     embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
-    vectorstore = FAISS.load_local("faiss_index", embeddings)
+    vectorstore = FAISS.load_local("faiss_index", embeddings, allow_dangerous_deserialization=True)
     docs = vectorstore.similarity_search(user_question)
     response = st.session_state.conversation({"input_documents": docs, "question": user_question}, return_only_outputs=True)
     st.session_state.chat_history.append({"role": "user", "content": user_question})
