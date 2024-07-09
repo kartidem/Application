@@ -1,0 +1,25 @@
+security types
+Enumeration: Passphrase_id
+this is the enumeration for passphrase ID
+the values of the enumeration Passphrase_id are SSL_profile_0 : 0, SSL_profile_1 : 1, SSL_profile_2 : 2, SSL_profile_3 : 3
+
+Enumeration: Terminal_state
+this is the enumeration for terminal state with values 0 for non_secure and 1 for secure
+the products supported by Terminal_state enumeration are MA SIGMA, MA LITE+, MA LITE, MA EXTREME, MORPHOWAVE COMPACT, VISIONPASS, MORPHOWAVE SP, VISIONPASS SP but the enumeration does not support MORPHOWAVE
+
+
+Typedef: Sec_obj_ID is a security object identifier with base type : i32
+
+
+Exception: Sec_obj_ID_not_found_error
+this is the exception when Security object identifier is not found in the terminal secure container 
+
+
+Struct: Terminal_security_state
+this is the terminal_security_state configuration
+the products supported by the Terminal_security_state structure are MA SIGMA, MA LITE+, MA LITE, MA EXTREME, MORPHOWAVE COMPACT, VISIONPASS, MORPHOWAVE SP, VISIONPASS SP but does not support MORPHOWAVE
+
+
+Struct: Authenticity_params
+this structure consists of parameters used to ensure the authenticity of a product
+

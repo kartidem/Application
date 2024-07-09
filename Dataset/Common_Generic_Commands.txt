@@ -1,0 +1,204 @@
+Common Generic Commands
+
+Function: Common_generic_commands.cls_read
+list<binary> cls_read(i32 timeout_in_sec,
+                      Cls_types.Cls_cards_definition cards)
+    throws Generic_types.Timeout_error, Generic_types.Invalid_argument_error, Cls_types.Cls_invalid_key_error, Generic_types.Generic_error, Generic_types.Cancelled_error
+
+this function/command reads files from a contactless card. this function/command returns list of read files/data
+
+the products supported by Common_generic_commands.cls_read function/comamnd are MA SIGMA, MA LITE+, MA LITE, MA EXTREME, MORPHOWAVE COMPACT, VISIONPASS, MORPHOWAVE SP, VISIONPASS SP but does not support MORPHOWAVE
+
+
+
+Function: Common_generic_commands.file_erase
+void file_erase(File_types.File_details file_details)
+    throws Generic_types.File_inexistent_error, Generic_types.SD_card_not_found, Generic_types.Generic_error, Generic_types.Invalid_argument_error
+
+this function/command erases a file represented by name and type. File erase with SSL parameter will reset both certificate and passphrase to their default values. 
+
+
+
+Function: Common_generic_commands.file_load
+
+void file_load(File_types.File_details file_details,
+               File_types.File_chunk chunk)
+    throws Generic_types.File_inexistent_error, Generic_types.File_too_large_error, Generic_types.File_name_missing_error, Generic_types.Invalid_file_extension_error, Generic_types.SD_card_not_found, Generic_types.Generic_error, Generic_types.Invalid_argument_error, Generic_types.File_already_loaded_error, Generic_types.File_incompatible_error, Generic_types.File_decryption_error
+this command/function Loads a file into the terminal.
+The File_types.File_chunk.action shall be taken into consideration only for the last chunk, i.e., when File_types.File_chunk.is_last is true. 
+Maximum file sizes: 
+File_types.File_type.video: 10MB ( For MAExtreme: 50MB ) 
+File_types.File_type.audio: 500 KB 
+[MASigma,MALite+,MA Extreme]File_types.File_type.picture: 5 MB 
+[MASigma,MALite+,MA Extreme] Customize picture Access granted and Access denied subtypes: 1 MB 
+[MWC,VIP]File_types.File_type.picture and Customize animation subtypes: 1 MB 
+Maximum chunk size is 10240 bytes, i.e. 10 KB 
+Make sure video file is in proper format. (MPEG4 or VP8) 
+While updating stolen card entries, all previous entries will be deleted 
+Images Format: PNG (For ViP: JPG) 
+Animation Format: GIF 
+For MASigma:
+picture_access_granted :- Resolution is 621*316.
+picture_access_denied :- Resolution is 621*316.
+picture_card_animation :- Resolution is 621*316.
+picture_biometric_animation :- Resolution is 621*316.
+picture_QR_code_animation :- Resolution is 621*316.
+picture_card_bio_animation :- Resolution is 621*316.
+picture_bio_QR_animation :- Resolution is 621*316.
+picture_card_QR_animation :- Resolution is 621*316.
+picture_card_bio_QR_animation :- Resolution is 621*316.
+picture_wallpaper :- Resolution is 800*480.
+
+For MALite+:
+picture_access_granted :- Resolution is 99*110.
+picture_access_denied :- Resolution is 99*110.
+picture_wallpaper :- Resolution is 240*320.
+picture_place_finger :- Resolution is 80*66.
+picture_remove_finger :- Resolution is 80*66.
+picture_retry :- Resolution is 165*165.
+picture_place_card :- Resolution is 165*165.
+picture_remove_card :- Resolution is 165*165.
+
+For MAExtreme:
+picture_access_granted :- Resolution is 266*296.
+picture_access_denied :- Resolution is 266*296.
+picture_card_animation :- Resolution is 480*350.
+picture_biometric_animation :- Resolution is 480*350.
+picture_QR_code_animation :- Resolution is 480*350.
+picture_card_bio_animation :- Resolution is 480*350.
+picture_bio_QR_animation :- Resolution is 480*350.
+picture_card_QR_animation :- Resolution is 480*350.
+picture_card_bio_QR_animation :- Resolution is 480*350.
+picture_wallpaper :- Resolution is 480*800.
+
+For MorphoWaveCompact:
+picture_access_granted :- Resolution is 266*296.
+picture_access_denied :- Resolution is 266*296.
+picture_card_animation :- Resolution is 350*350.
+picture_biometric_animation :- Resolution is 350*350.
+picture_QR_code_animation :- Resolution is 350*350.
+picture_card_bio_animation :- Resolution is 350*350.
+picture_bio_QR_animation :- Resolution is 350*350.
+picture_card_QR_animation :- Resolution is 350*350.
+picture_card_bio_QR_animation :- Resolution is 350*350.
+picture_QR_code_animation :- Resolution is 350*353.
+picture_wallpaper :- Resolution is 480*800.
+
+For VisionPass and VisionPass SP Terminals:
+picture_access_granted :- Resolution is 193*217.
+picture_access_denied :- Resolution is 193*217.
+picture_wallpaper :- Resolution is 480*800.
+Warning:
+
+For file type File_types.File_type.stolen_card_list, No error will be return. And maximum 250000 valid stolen card entries will be stored and rest of the entries will be ignored. 
+
+Specific handling needed for the multimessage request
+
+void Generic_commandsClient::file_load(const  ::Distant_cmd::File_details& file_details, const  ::Distant_cmd::File_chunk& chunk)
+{
+    // Original code section in the generated code
+    // send_file_load(file_details, chunk);
+    // recv_file_load();
+ 
+    // BEGIN: Custom section for receiving and processing intermediate data
+    // This is actually multi-request handling
+    ::Distant_cmd::File_chunk actual_chunk; // a non-const chunk required
+    while(true)
+    {
+        // Client's call-back is supposed to load the data that shall be available in the 'actual_chunk' parameter to send to the Thrift server.
+        //  Note that in case of the last chunk of data to be uploaded the 'actual_chunk.is_last' flag must be set.
+        Multiresponse_handler::client_cb_file_load(actual_chunk);
+        send_file_load(file_details, actual_chunk);
+ 
+        recv_file_load(); // required to see if exception was received -- so that further sending is stopped
+ 
+        if(actual_chunk.is_last) // Exit the loop since the last chunk has been sent and its corresponding response received
+        {
+            break;
+        }
+    }
+    // END: Custom section for receiving and processing intermediate data
+}
+
+
+Function: Common_generic_commands.picture_capture
+binary picture_capture(Generic_types.Picture_interface input_interface,
+                       Generic_types.Picture_format format)
+    throws Generic_types.Generic_error, Generic_types.Invalid_argument_error
+
+this command/function captures a picture in specified format. this function will make the terminal will capture a picture from camera or will perform a screenshot and will return the picture in specified format. the Common_generic_commands.picture_capture returns the raw data of the captured picture
+the products supported by Common_generic_commands.picture_capture function are MA SIGMA, MA LITE+, MORPHOWAVE, MA EXTREME, MORPHOWAVE COMPACT, VISIONPASS, VISIONPASS SP but does not support MA LITE and MORPHOWAVE SP
+
+
+
+Function: Common_generic_commands.picture_display
+void picture_display(Generic_types.Picture_format format,
+                     binary picture_data,
+                     Generic_types.XY_coordinates coordinates,
+                     i32 duration_in_sec)
+    throws Generic_types.Invalid_argument_error, Generic_types.Generic_error
+
+this function/command displays a picture in specified format. The picture will start at the specified coordinates and will be displayed during the specified duration in the Common_generic_commands.picture_display function
+the products supported by Common_generic_commands.picture_display function/command are MA SIGMA, MA LITE+, MORPHOWAVE, MA EXTREME, MORPHOWAVE COMPACT, VISIONPASS, VISIONPASS SP but does not support MA LITE and MORPHOWAVE SP
+
+
+
+
+Function: Common_generic_commands.product_get_info
+Generic_types.Product_info product_get_info(set<Generic_types.Product_info_type> info_type)
+    throws Generic_types.Invalid_argument_error, Generic_types.Generic_error
+
+this function/command gets the product information form terminal board and sensor board and returns requested information
+
+
+Function: Common_generic_commands.terminal_get_version
+string terminal_get_version(Generic_types.Generic_firmware_type firmware_type)
+    throws Generic_types.Generic_error
+this function/command Gets Firmware versions and Returns Firmware version of requested board type (Terminal or Sensor)
+
+
+
+Function: Common_generic_commands.terminal_reboot
+void terminal_reboot()
+    throws Generic_types.Generic_error
+
+this command/function is used to reboot the terminal 
+
+
+
+
+Function: Common_generic_commands.terminal_echo
+binary terminal_echo(binary buffer)
+    throws Generic_types.Out_of_memory_error, Generic_types.Generic_error
+the Common_generic_commands.terminal_echo function/command Sends back a received buffer. The Buffer shall be less than 64 bytes 
+
+
+
+
+Function: Common_generic_commands.terminal_retrieve_peripherals
+list<Generic_types.Terminal_peripherals> terminal_retrieve_peripherals()
+    throws Generic_types.Generic_error
+this function/command Retrieves the list of terminal internal peripherals. 
+
+
+
+ 
+Function: Common_generic_commands.terminal_set_configuration
+void terminal_set_configuration(Generic_types.Terminal_configuration terminal_config)
+    throws Generic_types.Invalid_argument_error, Generic_types.Ethernet_configuration_failed, Generic_types.WIFI_module_not_connected, Generic_types.License_not_found, Generic_types.Generic_error
+
+this command/functions is used to configure:
+1) Terminal's local date and time (i.e. not Network Time Protocol) 
+2) Terminal's IP configuration 
+3) Terminal's WIFI configuration 
+4) Terminal's serial channel configuration 
+Note: 
+While setting the serial channel configuration, a delay of 3 seconds is provided after sending the response to the client, so that the configuration is applied only after the response is sent to the client. 
+
+
+
+
+
+
+
+
