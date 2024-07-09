@@ -133,7 +133,7 @@ def main():
                 
                 st.session_state.chat_history = []
                 try:
-                    uploaded_files = ["log.txt"] 
+                    uploaded_files = [""] 
                 except FileNotFoundException(Exception):
                     st.write("FileNotFoundException: File(s) of the following field either dont exist or are corrupted")
                 
@@ -153,7 +153,7 @@ def main():
         if st.button("Parameters Guide"):
             st.session_state.chat_history = []
             try:
-                uploaded_files = [".\Dataset\Parameters_Guide.pdf"]
+                uploaded_files = ["Parameters_Guide.pdf"]
             except FileNotFoundException(Exception):
                     st.write("FileNotFoundException: File(s) of the following field either dont exist or are corrupted") 
             try:  
@@ -172,10 +172,10 @@ def main():
             st.session_state.chat_history = []
 
             try:
-                uploaded_files = [".\Dataset\Bio_types.txt", 
-                                  ".\Dataset\Common_Generic_Commands.txt",
-                                  ".\Dataset\MA5G_Generic_commands.txt", 
-                                  ".\Dataset\security_types.txt"] 
+                uploaded_files = ["Bio_types.txt", 
+                                  "Common_Generic_Commands.txt",
+                                  "MA5G_Generic_commands.txt", 
+                                  "security_types.txt"] 
             except FileNotFoundException(Exception):
                     st.write("FileNotFoundException: File(s) of the following field either dont exist or are corrupted")
 
