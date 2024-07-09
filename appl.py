@@ -21,8 +21,8 @@ class FileNotFoundException(Exception):
 class ProcessingException(Exception):
     pass
 
-load_dotenv()
-genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+google_api_key = st.secrets["GOOGLE_API_KEY"]
+genai.configure(api_key=google_api_key)
 
 def get_text_from_file(file_path):
     text = ""
