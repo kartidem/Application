@@ -133,7 +133,7 @@ def main():
                 
                 st.session_state.chat_history = []
                 try:
-                    uploaded_files = [".\Dataset\Administrator_Guide.pdf"] 
+                    uploaded_files = ["log.txt"] 
                 except FileNotFoundException(Exception):
                     st.write("FileNotFoundException: File(s) of the following field either dont exist or are corrupted")
                 
