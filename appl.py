@@ -79,7 +79,7 @@ def handle_userinput(user_question):
 
 
     embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
-    vectorstore = FAISS.load_local("faiss_index", embeddings)
+    vectorstore = FAISS.load_local("faiss_index", embeddings, allow_dangerous_deserialization = True)
     docs = vectorstore.similarity_search(user_question)
     response = st.session_state.conversation({"input_documents": docs, "question": user_question}, return_only_outputs=True)
     output_text = response.get('output_text', '')
