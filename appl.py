@@ -21,8 +21,8 @@ class FileNotFoundException(Exception):
 class ProcessingException(Exception):
     pass
 
-load_dotenv()
-genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+api_key = st.secrets["GOOGLE_API_KEY"]
+genai.configure(api_key=api_key)
 
 def get_text_from_file(file_path):
     text = ""
@@ -158,7 +158,7 @@ def main():
             
                 
                 try:
-                    uploaded_files = [".\Dataset\Administrator_Guide.pdf"] 
+                    uploaded_files = ["Administrator_Guide.pdf"] 
                 except FileNotFoundException(Exception):
                     st.write("FileNotFoundException: File(s) of the following field either dont exist or are corrupted")
                 
@@ -180,7 +180,7 @@ def main():
             st.session_state.chat_history = []
             
             try:
-                uploaded_files = [".\Dataset\Parameters_Guide.pdf"]
+                uploaded_files = ["Parameters_Guide.pdf"]
             except FileNotFoundException(Exception):
                     st.write("FileNotFoundException: File(s) of the following field either dont exist or are corrupted") 
             try:  
@@ -200,10 +200,10 @@ def main():
             st.session_state.chat_history = []
 
             try:
-                uploaded_files = [".\Dataset\Bio_types.txt", 
-                                  ".\Dataset\Common_Generic_Commands.txt",
-                                  ".\Dataset\MA5G_Generic_commands.txt", 
-                                  ".\Dataset\security_types.txt"] 
+                uploaded_files = ["Bio_types.txt", 
+                                  "Common_Generic_Commands.txt",
+                                  "MA5G_Generic_commands.txt", 
+                                  "security_types.txt"] 
             except FileNotFoundException(Exception):
                     st.write("FileNotFoundException: File(s) of the following field either dont exist or are corrupted")
             """Thrift Commands currently only contain
