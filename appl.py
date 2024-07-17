@@ -194,36 +194,5 @@ def main():
             except ProcessingException:
                 st.write("ProcessingException: an error was encountered while setting up the model")
 
-        if st.button("Thrift Commands"):
-
-            st.session_state.chat_history = []
-
-            try:
-                uploaded_files = ["Bio_types.txt", 
-                                  "Common_Generic_Commands.txt",
-                                  "MA5G_Generic_commands.txt", 
-                                  "security_types.txt"] 
-            except FileNotFoundException(Exception):
-                    st.write("FileNotFoundException: File(s) of the following field either dont exist or are corrupted")
-            """Thrift Commands currently only contain
-                    - Bio types
-                    - Common Generic commands
-                    - MA5G Generic Commands
-                    - Security Types
-            """
-            try:
-                with st.spinner("Processing..."): 
-                    raw_texts="" 
-                
-                    for uploaded_file in uploaded_files:
-                        raw_texts += get_text_from_file(uploaded_file)
-                    text_chunks = get_text_chunks(raw_texts)
-                    vectorstore = get_vectorstore(text_chunks)
-                    #st.session_state.clear()
-                    st.session_state.conversation = get_convo_chain(vectorstore)
-            except ProcessingException:
-                st.write("ProcessingException: an error was encountered while setting up the model")
-        
-
 if __name__ == '__main__':
     main()
