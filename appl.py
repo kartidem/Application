@@ -142,7 +142,7 @@ def main():
         header_html = """
         <style>
             h1{
-                margin-buttom: 20%;
+                margin-buttom: 30%;
             }
         </style>
         <h1>IDEMIA</h1>
