@@ -148,6 +148,8 @@ def main():
         <h1>IDEMIA</h1>
         """
 
+        st.markdown(header_html, unsafe_allow_html=True)
+
         st.subheader("Select the field to ask from:")
 
     
