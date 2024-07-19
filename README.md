@@ -57,6 +57,12 @@ Below mentioned are the dependencies:
 - `langchain-text-splitters==0.2.0`
 - `google-generativeai==0.5.4`
 
+## Files and folders
+- faiss_index: contains the vector store
+- Administrator_Guide.pdf: Admin Guide pdf from where text is extracted
+- Parameter_Guide.pdf: Parameter Guide pdf from where text is extracted
+- IDEMIALogo
+
 ## Links
 - Streamlit cloud link : https://share.streamlit.io/
 - App Link : https://idemiagpt.streamlit.app/
