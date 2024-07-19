@@ -137,11 +137,7 @@ def main():
         handle_userinput(user_question)
     
     with st.sidebar:
-        logo_html = """
-        <h2>IDEMIA</h2>
-        
-        """
-        st.markdown(logo_html, unsafe_allow_html=True)
+        st.header("IDEMIA")
 
         st.subheader("Select the field to ask from:")
 
