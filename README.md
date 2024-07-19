@@ -26,10 +26,10 @@ This section consists of a concise explaination of the entire source code.
   - It uses `RecursiveCharacterTextSplitter` from **LangChain** to split the raw text into chunks of size 10,000 characters with an overlap of 1,000 characters
   - Returns a list of text chunks
 - `get_vectorstore(text_chunks)`
-  - Creates and stores text embeddings in a FAISS vector store.
+  - Creates and stores text embeddings in a **FAISS** vector store.
   - Uses `GoogleGenerativeAIEmbeddings` to generate embeddings for each text chunk. Embedding model: `embedding-001`
   - The embeddings created are vectors containing float values which represents the position of the text chunk in a high-dimensional space. Each dimension in the embedding vector captures a different aspect of the chunk's semantics.
-  - Stores these embeddings in a FAISS vector store
+  - Stores these embeddings in a **FAISS** vector store
   - Saves the vector store locally
   - Returns the vector store
 - `get_convo_chain(vectorstore)`
@@ -47,7 +47,15 @@ This section consists of a concise explaination of the entire source code.
 
 
 ## Dependencies 
-
+Below mentioned are the dependencies:
+- `streamlit==1.11.0`
+- `python-dotenv==1.0.1`
+- `PyPDF2==3.0.1`
+- `langchain==0.2.1`
+- `faiss-cpu==1.8.0`
+- `langchain-google-genai==1.0.5`
+- `langchain-text-splitters==0.2.0`
+- `google-generativeai==0.5.4`
 
 ## Links
 - Streamlit cloud link : https://share.streamlit.io/
