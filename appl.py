@@ -145,7 +145,7 @@ def main():
                 height: 75px;
             }
         </style>
-        <img src="https://github.com/kartidem/Application/blob/main/IDEMIAlogoTransparent.png?raw=true" id="idemia-logo">
+        <h2 id="idemia-logo">IDEMIA</h2>
         
         """
         st.markdown(logo_html, unsafe_allow_html=True)
