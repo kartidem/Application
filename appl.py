@@ -139,16 +139,6 @@ def main():
     with st.sidebar:
         
 
-        header_html = """
-        <style>
-            h1{
-                margin-buttom: 30%;
-            }
-        </style>
-        <h1>IDEMIA</h1>
-        """
-
-        st.markdown(header_html, unsafe_allow_html=True)
 
         st.subheader("Select the field to ask from:")
 
