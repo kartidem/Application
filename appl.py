@@ -139,7 +139,7 @@ def main():
     with st.sidebar:
         
 
-        st.markdown(logo_html, unsafe_allow_html=True)
+        st.header("IDEMIA")
 
         st.subheader("Select the field to ask from:")
 
