@@ -139,7 +139,14 @@ def main():
     with st.sidebar:
         
 
-        st.header("IDEMIA")
+        header_html = """
+        <style>
+            h1{
+                margin-buttom: 20%;
+            }
+        </style>
+        <h1>IDEMIA</h1>
+        """
 
         st.subheader("Select the field to ask from:")
 
