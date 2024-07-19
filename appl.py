@@ -137,7 +137,7 @@ def main():
         handle_userinput(user_question)
     
     with st.sidebar:
-        st.header("IDEMIA")
+        
 
         st.subheader("Select the field to ask from:")
 
