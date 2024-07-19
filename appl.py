@@ -137,17 +137,8 @@ def main():
         handle_userinput(user_question)
     
     with st.sidebar:
-        logo_html = """
-        <style>
-            #idemia-logo{
-                margin-bottom: 20%;
-                width: 300px;
-                height: 75px;
-            }
-        </style>
-        <img src="https://github.com/kartidem/Application/blob/main/IDEMIAlogoTransparent.png?raw=true" id="idemia-logo">
-                
-        """
+        
+
         st.markdown(logo_html, unsafe_allow_html=True)
 
         st.subheader("Select the field to ask from:")
