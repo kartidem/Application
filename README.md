@@ -58,10 +58,20 @@ Below mentioned are the dependencies:
 - `google-generativeai==0.5.4`
 
 ## Files and folders
-- faiss_index: contains the vector store
+- faiss_index: contains the vector store in pkl file format
 - Administrator_Guide.pdf: Admin Guide pdf from where text is extracted
+- Bio_types.txt: Contains all the thrift commands related to biotypes
+- Common_Generic_Commands.txt: Contains all the common thrift commands used
+- IDEMIALogoTransparent.jpg: Used as the logo
+- MA5G_Generic_commands: Contains all the MA5G commands
 - Parameter_Guide.pdf: Parameter Guide pdf from where text is extracted
-- IDEMIALogo
+- appl.py: Source code
+- botPic.png: Bot pfp in the messages
+- htmlTemplates.py: Contains the html and css scripts for styling the messages
+- log.txt: log of username and the questions they ask
+- requirements.txt: List of dependencies
+- security_types.txt: Contains all the security thrift commands
+- userPic.png: user pfp in the messages
 
 ## Links
 - Streamlit cloud link : https://share.streamlit.io/
