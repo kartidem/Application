@@ -76,3 +76,57 @@ Below mentioned are the dependencies:
 ## Links
 - Streamlit cloud link : https://share.streamlit.io/
 - App Link : https://idemiagpt.streamlit.app/
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Quick Setup:
+
+1. Checkout the code from github public repo "Application" (credentials required)
+
+2. Change the code in appl.py on local and checkin to git hub.
+
+3. Invoke the application hosted on streamlit web by accessing AppLink, the code will be fetched from git and executed.
+     https://idemiagpt.streamlit.app/
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////
+Deploy and execute the application on local machine:
+
+1. Install the python >=3.9.2  on your local machine.
+   Check python version executing python --version. if version is not correct add the path of python.exe in environment varaible.
+2. Update C:\Users\<GID>\AppData\Roaming\pip\pip.ini with below mentioned text if you are in idemia network.
+    
+	   [global]
+       timeout = 600
+       index = https://nexus.os.plf.idemia.com/repository/pypi/pypi
+       index-url = https://nexus.os.plf.idemia.com/repository/pypi/simple
+       trusted-host = nexus.os.plf.idemia.com
+	   
+3. Install virtualenv using command pip install virtualenv
+4. Create virtual environment :
+    >python -m virtualenv env_gpt
+	>cd <path to env_gpt>
+	>cd Scripts
+	>activate
+	(env_gpt)>cd <path to Application folder>
+	(env_gpt)>pip install -r requirements.txt
+	
+	All the dependencies will be installed in the virtual environment.
+	
+5. Not recommended but you have to add GOOGLE_API_KEY in windows environment variable to make app work on local machine.
+
+6. API_KEY is stored in streamlit secret store and it can be found under settings option on https://share.streamlit.io/
+ 
+7. comment #api_key = st.secrets["GOOGLE_API_KEY"]
+   instead add  api_key = os.environ["GOOGLE_API_KEY"]
+   
+8. Change the code in appl.py on local and execute the below command to access the app from local
+   
+    (env_gpt)>streamlit run appl.py
+	 
+	  currently facing google.api_core.exceptions.DeadlineExceeded: 504 Deadline Exceeded error 
+	  perhaps due to access blocked from idemia network.
+	  
+	  Try to use public internet.
+	
